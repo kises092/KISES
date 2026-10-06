@@ -26,18 +26,7 @@ import { configure, createMascot } from "https://cdn.jsdelivr.net/npm/web-mascot
       createMascot({ container: document.getElementById("pet-container"), pack: "Neuron" }),
       createMascot({ container: document.getElementById("pet-container"), pack: "Eviling" })
     ]);
-
-    // 按住 Shift 键时，桌宠可以互动；松开就穿透
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'Shift') {
-        document.getElementById('pet-container').style.pointerEvents = 'auto';
-      }
-    });
-    window.addEventListener('keyup', (e) => {
-      if (e.key === 'Shift') {
-        document.getElementById('pet-container').style.pointerEvents = 'none';
-      }
-    });
+    
   </script>
 </body>
 </html>
