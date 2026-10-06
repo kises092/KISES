@@ -4,22 +4,40 @@
   <meta charset="UTF-8">
   <title>我的桌宠</title>
   <style>
-    #pet-container { position: fixed; width: 100vw; height: 100vh; z-index: 9999; }
+    #pet-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  pointer-events: none; /* 平时鼠标穿透 */
+}
   </style>
 </head>
 <body>
   <div id="pet-container"></div>
   
   <script type="module">
-    // 库和模型全部从网上 CDN 加载，不需要本地任何文件！
-    import { configure, createMascot } from "https://cdn.jsdelivr.net/npm/web-mascot/dist/index.js";
-    
+import { configure, createMascot } from "https://cdn.jsdelivr.net/npm/web-mascot/dist/index.js";
     configure({ assets: "https://cdn.jsdelivr.net/npm/web-mascot/dist/mascot_pack" });
-    
+
     const [neuron, eviling] = await Promise.all([
       createMascot({ container: document.getElementById("pet-container"), pack: "Neuron" }),
       createMascot({ container: document.getElementById("pet-container"), pack: "Eviling" })
     ]);
+
+    // 按住 Shift 键时，桌宠可以互动；松开就穿透
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Shift') {
+        document.getElementById('pet-container').style.pointerEvents = 'auto';
+      }
+    });
+    window.addEventListener('keyup', (e) => {
+      if (e.key === 'Shift') {
+        document.getElementById('pet-container').style.pointerEvents = 'none';
+      }
+    });
   </script>
 </body>
 </html>
