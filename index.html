@@ -5,27 +5,27 @@
   <title>我的桌宠</title>
   <style>
     #pet-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 9999;
-  pointer-events: none; /* 平时鼠标穿透 */
-}
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 9999;
+      pointer-events: none; /* 核心：让鼠标穿透，不挡B站按钮 */
+    }
   </style>
 </head>
 <body>
   <div id="pet-container"></div>
-  
+
   <script type="module">
-import { configure, createMascot } from "https://fastly.jsdelivr.net/npm/web-mascot/dist/index.js";
+    import { configure, createMascot } from "https://fastly.jsdelivr.net/npm/web-mascot/dist/index.js";
     configure({ assets: "https://fastly.jsdelivr.net/npm/web-mascot/dist/mascot_pack" });
+
     const [neuron, eviling] = await Promise.all([
       createMascot({ container: document.getElementById("pet-container"), pack: "Neuron" }),
       createMascot({ container: document.getElementById("pet-container"), pack: "Eviling" })
     ]);
-    
   </script>
 </body>
 </html>
