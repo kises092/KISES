@@ -19,9 +19,8 @@
   <div id="pet-container"></div>
   
   <script type="module">
-import { configure, createMascot } from "https://unpkg.com/web-mascot@latest/dist/index.js";
-configure({ assets: "https://unpkg.com/web-mascot@latest/dist/mascot_pack" });
-
+import { configure, createMascot } from "https://cdnjs.cloudflare.com/ajax/libs/web-mascot/1.0.0/index.js";
+    configure({ assets: "https://cdnjs.cloudflare.com/ajax/libs/web-mascot/1.0.0/mascot_pack" });
     const [neuron, eviling] = await Promise.all([
       createMascot({ container: document.getElementById("pet-container"), pack: "Neuron" }),
       createMascot({ container: document.getElementById("pet-container"), pack: "Eviling" })
