@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>我的桌宠</title>
+  <style>
+    #pet-container { position: fixed; bottom: 0; right: 0; width: 400px; height: 300px; z-index: 9999; }
+  </style>
+</head>
+<body>
+  <h1>看右下角～</h1>
+  <div id="pet-container"></div>
+  
+  <script type="module">
+    // 库和模型全部从网上 CDN 加载，不需要本地任何文件！
+    import { configure, createMascot } from "https://cdn.jsdelivr.net/npm/web-mascot/dist/index.js";
+    
+    configure({ assets: "https://cdn.jsdelivr.net/npm/web-mascot/dist/mascot_pack" });
+    
+    const [neuron, eviling] = await Promise.all([
+      createMascot({ container: document.getElementById("pet-container"), pack: "Neuron" }),
+      createMascot({ container: document.getElementById("pet-container"), pack: "Eviling" })
+    ]);
+  </script>
+</body>
+</html>
